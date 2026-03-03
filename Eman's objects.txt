@@ -1,4 +1,4 @@
-
+--Flights
 CREATE TABLE Flights (
     flight_id INT PRIMARY KEY,
     aircraft_id INT,
@@ -14,7 +14,7 @@ CREATE TABLE Flights (
     CHECK (seats_available <= total_seats)
 );
 
-
+--Bookings
 CREATE TABLE Bookings (
     booking_id INT PRIMARY KEY,
     ticket_number VARCHAR(30) UNIQUE,
@@ -28,7 +28,7 @@ CREATE TABLE Bookings (
     FOREIGN KEY (flight_id) REFERENCES Flights(flight_id)
 );
 
-
+--Payment
 CREATE TABLE Payment (
     payment_id INT PRIMARY KEY,
     booking_id INT NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE Payment (
     FOREIGN KEY (booking_id) REFERENCES Bookings(booking_id)
 );
 
-
+--Reference Table
 CREATE TABLE Booking_Passengers (
     passenger_id INT NOT NULL,
     booking_id INT NOT NULL,
@@ -54,4 +54,5 @@ CREATE TABLE Booking_Passengers (
 
     FOREIGN KEY (passenger_id) REFERENCES Passenger(passenger_id),
     FOREIGN KEY (booking_id) REFERENCES Bookings(booking_id)
+
 );
